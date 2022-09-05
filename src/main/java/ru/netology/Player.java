@@ -6,10 +6,12 @@ import java.util.Map;
 public class Player {
     private String name;
 
-    /** информация о том, в какую игру сколько часов было сыграно
-    ключ - игра
-    значение - суммарное количество часов игры в эту игру */
-    private Map<Game, Integer> playedTime = new HashMap<>();
+    /**
+     * информация о том, в какую игру сколько часов было сыграно
+     * ключ - игра
+     * значение - суммарное количество часов игры в эту игру
+     */
+    protected Map<Game, Integer> playedTime = new HashMap<>();
 
     public Player(String name) {
         this.name = name;
@@ -33,7 +35,7 @@ public class Player {
     public int play(Game game, int hours) {
         game.getStore().addPlayTime(name, hours);
         if (playedTime.containsKey(game)) {
-            playedTime.put(game, playedTime.get(game));
+            playedTime.put(game, playedTime.get(game) + hours);
         } else {
             playedTime.put(game, hours);
         }
