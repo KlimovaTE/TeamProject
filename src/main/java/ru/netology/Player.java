@@ -42,7 +42,7 @@ public class Player {
       playedTime.put(game, playedTime.get(game) + hours);
     } else {
       throw new RuntimeException(
-              "Игра " + game + " не установлена"
+              "Игра " + game.getTitle() + " не установлена"
       );
     }
     return playedTime.get(game);
