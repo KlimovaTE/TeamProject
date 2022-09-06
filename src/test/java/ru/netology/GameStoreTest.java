@@ -59,5 +59,13 @@ public class GameStoreTest {
     Assertions.assertEquals(21, store.getSumPlayedTime());
   }
 
+  @Test
+  public void shouldGetMostActivePlayerIfOnlyOnePlayerPlayedOneHour() {
+    GameStore store = new GameStore();
+    store.playedTime.put("Vasya", 1);
+
+    Assertions.assertEquals("Vasya", store.getMostPlayer());
+  }
+
   // другие ваши тесты
 }
