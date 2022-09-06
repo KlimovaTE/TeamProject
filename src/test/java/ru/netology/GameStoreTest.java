@@ -19,9 +19,8 @@ public class GameStoreTest {
   @Test
   public void shouldNotFoundGameWithoutErrors() {
     GameStore store = new GameStore();
-    Game game = null;
 
-    assertFalse(store.containsGame(game));
+    assertFalse(store.containsGame(null));
   }
 
   @Test
@@ -51,6 +50,13 @@ public class GameStoreTest {
   }
 
   @Test
+  public void shouldReturnBullIfPlayersNotExist() {
+    GameStore store = new GameStore();
+
+    assertNull(store.getMostPlayer());
+  }
+
+  @Test
   public void shouldGetSumOfPlayedTime() {
     GameStore store = new GameStore();
     store.playedTime.put("Vasya", 11);
@@ -60,12 +66,17 @@ public class GameStoreTest {
   }
 
   @Test
+  public void shouldGetSumBeZeroIfPlayersNotExist() {
+    GameStore store = new GameStore();
+
+    assertEquals(0, store.getSumPlayedTime());
+  }
+
+  @Test
   public void shouldGetMostActivePlayerIfOnlyOnePlayerPlayedOneHour() {
     GameStore store = new GameStore();
     store.playedTime.put("Vasya", 1);
 
     Assertions.assertEquals("Vasya", store.getMostPlayer());
   }
-
-  // другие ваши тесты
 }
