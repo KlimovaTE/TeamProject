@@ -128,7 +128,7 @@ public class PlayerTest {
 
         Player player = new Player("Petya");
         player.installGame(game);
-
+        player.play(game, 7);
 
         Game expected = game;
         Game actual = player.mostPlayerByGenre(game.getGenre());
