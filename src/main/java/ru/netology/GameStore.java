@@ -20,6 +20,15 @@ public class GameStore {
      * Каждый объект игры помнит объект каталога, которому она принадлежит
      */
     public Game publishGame(String title, String genre) {
+        for (int i = 0; i < games.size(); i++) {
+            if (games.get(i).getTitle().equals(title)) {
+                if (games.get(i).getGenre().equals(genre)) {
+                    throw new RuntimeException(
+                            "Игра уже есть"
+                    );
+                }
+            }
+        }
         Game game = new Game(title, genre, this);
         games.add(game);
         return game;
