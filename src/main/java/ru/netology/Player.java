@@ -57,8 +57,6 @@ public class Player {
     for (Game game : playedTime.keySet()) {
       if (game.getGenre().equals(genre)) {
         sum += playedTime.get(game);
-      } else {
-        sum = 0;
       }
     }
     return sum;
@@ -68,16 +66,20 @@ public class Player {
    * Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
    * Если в игры этого жанра не играли, возвращается null
    */
+
   public Game mostPlayerByGenre(String genre) {
     int mostPlayed = 0;
     Game bestPlayed = null;
+    Map<Game, Integer> temp = new HashMap<>();
     for (Game game : playedTime.keySet()) {
       if (game.getGenre().equals(genre)) {
-        int playedTime = sumGenre(genre);
-        {
-          if (playedTime > mostPlayed) {
-            mostPlayed = playedTime;
-            bestPlayed = game;
+        temp.put(game, playedTime.get(game));
+        for (int value : temp.values()) {
+          {
+            if (value > mostPlayed) {
+              mostPlayed = value;
+              bestPlayed = game;
+            }
           }
         }
       }
