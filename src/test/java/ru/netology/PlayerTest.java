@@ -49,28 +49,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldInstallGameIfInstalled() {
-        GameStore store = new GameStore();
-        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Game game2 = store.publishGame("Нетология Бой Онлайн", "Шуттер");
-        Game game3 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-
-        Player player = new Player("Petya");
-
-        player.installGame(game1);
-        player.installGame(game2);
-        player.installGame(game3);
-
-        Map expected = new HashMap<>() {{
-            put(game1, 0);
-            put(game2, 0);
-        }};
-        Map actual = player.playedTime;
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldPlayOnce() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
