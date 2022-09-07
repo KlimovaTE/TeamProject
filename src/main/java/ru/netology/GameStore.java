@@ -24,7 +24,7 @@ public class GameStore {
             if (games.get(i).getTitle().equals(title)) {
                 if (games.get(i).getGenre().equals(genre)) {
                     throw new RuntimeException(
-                            "Игра уже есть"
+                            "Игра " + title + " жанра " + genre + " уже внесена в каталог"
                     );
                 }
             }
