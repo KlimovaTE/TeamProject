@@ -17,6 +17,32 @@ public class GameStoreTest {
   }
 
   @Test
+  public void shouldThrowExceptionIfAddCopyOfGame() {
+
+    GameStore store = new GameStore();
+    store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+    assertThrows(RuntimeException.class, () -> store.publishGame("Нетология Баттл Онлайн", "Аркады"));
+  }
+
+  @Test
+  public void shouldAddGameWithSameGenreAndDiffName() {
+    GameStore store = new GameStore();
+    store.publishGame("Нетология Баттл Онлайн", "Аркады");
+    Game game1 = store.publishGame("Нетология Баттл 2 Онлайн", "Аркады");
+
+    assertTrue(store.containsGame(game1));
+  }
+
+  @Test
+  public void shouldAddGameWithSameNameAndDiffGenre() {
+    GameStore store = new GameStore();
+    Game game1 = store.publishGame("Нетология Баттл Онлайн", "MMO");
+
+    assertTrue(store.containsGame(game1));
+  }
+
+  @Test
   public void shouldNotFoundGameWithoutErrors() {
     GameStore store = new GameStore();
 
